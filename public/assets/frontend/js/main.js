@@ -19,37 +19,9 @@
     // Sticky Navbar
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
-            $('.sticky-top').css('top', '0px');
+            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
         } else {
-            $('.sticky-top').css('top', '-100px');
-        }
-    });
-    
-    
-    // Dropdown on mouse hover
-    const $dropdown = $(".dropdown");
-    const $dropdownToggle = $(".dropdown-toggle");
-    const $dropdownMenu = $(".dropdown-menu");
-    const showClass = "show";
-    
-    $(window).on("load resize", function() {
-        if (this.matchMedia("(min-width: 992px)").matches) {
-            $dropdown.hover(
-            function() {
-                const $this = $(this);
-                $this.addClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "true");
-                $this.find($dropdownMenu).addClass(showClass);
-            },
-            function() {
-                const $this = $(this);
-                $this.removeClass(showClass);
-                $this.find($dropdownToggle).attr("aria-expanded", "false");
-                $this.find($dropdownMenu).removeClass(showClass);
-            }
-            );
-        } else {
-            $dropdown.off("mouseenter mouseleave");
+            $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
         }
     });
     
@@ -84,27 +56,29 @@
     });
 
 
+    // Header carousel
+    $(".header-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1500,
+        loop: true,
+        nav: false,
+        dots: true,
+        items: 1,
+        dotsData: true,
+    });
+
+
     // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
+    $('.testimonial-carousel').owlCarousel({
         autoplay: true,
         smartSpeed: 1000,
-        center: true,
-        margin: 25,
-        dots: true,
         loop: true,
-        nav : false,
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
+        nav: false,
+        dots: true,
+        items: 1,
+        dotsData: true,
     });
+
     
 })(jQuery);
 

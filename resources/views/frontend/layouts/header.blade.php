@@ -15,7 +15,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
@@ -37,12 +37,6 @@
     <link href="{{ asset('assets/frontend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/home.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Removed duplicate bootstrap JS to prevent dropdown conflicts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Cleaned up duplicate stylesheets -->
-
     @if(env('GOOGLE_TAG_ID'))
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_TAG_ID') }}"></script>
@@ -57,74 +51,30 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex flex-column align-items-center justify-content-center" style="background:linear-gradient(160deg,#060d1f 0%,#0b1a3a 60%,#0f1f45 100%);z-index:99999;">
-
-        <!-- Spinning arc + logo -->
-        <div class="position-relative d-flex align-items-center justify-content-center mb-5" style="width:200px;height:200px;">
-            <svg class="position-absolute" width="200" height="200" style="animation:spinCW 1.4s linear infinite;">
-                <circle cx="100" cy="100" r="93" fill="none" stroke="rgba(216,19,36,0.15)" stroke-width="2"/>
-                <circle cx="100" cy="100" r="93" fill="none" stroke="#D81324" stroke-width="3"
-                    stroke-dasharray="90 490" stroke-linecap="round"/>
-            </svg>
-            <svg class="position-absolute" width="200" height="200" style="animation:spinCCW 2s linear infinite;">
-                <circle cx="100" cy="100" r="76" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
-                <circle cx="100" cy="100" r="76" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"
-                    stroke-dasharray="50 430" stroke-linecap="round"/>
-            </svg>
-            <!-- Logo -->
-            <div class="rounded-circle overflow-hidden d-flex align-items-center justify-content-center" style="width:130px;height:130px;background:#0b1a3a;border:1px solid rgba(216,19,36,0.25);">
-                <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="Smart Grup" style="width:110px;height:110px;object-fit:contain;">
-            </div>
-        </div>
-
-        <!-- Divider line -->
-        <div class="d-flex align-items-center gap-3 mb-3" style="width:200px;">
-            <div style="flex:1;height:1px;background:rgba(216,19,36,0.3);"></div>
-            <div style="width:5px;height:5px;background:#D81324;border-radius:50%;"></div>
-            <div style="flex:1;height:1px;background:rgba(216,19,36,0.3);"></div>
-        </div>
-
-        <p style="color:rgba(255,255,255,0.95);font-size:1rem;letter-spacing:2px;text-align:center;margin:0;">Güvenli ve Temiz Bir Yaşam İçin Hoş Geldiniz</p>
+      <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status"></div>
+        <img class="position-absolute top-50 start-50 translate-middle" src="{{ asset('assets/frontend/img/icons/icon-1.png') }}" alt="Icon">
     </div>
-    <style>
-        @keyframes spinCW  { to { transform: rotate(360deg); } }
-        @keyframes spinCCW { to { transform: rotate(-360deg); } }
-        #spinner.show { opacity: 1 !important; visibility: visible !important; }
-    </style>
-    <script>
-        setTimeout(function () {
-            var s = document.getElementById('spinner');
-            s.style.transition = 'opacity 0.6s ease';
-            s.style.opacity = '0';
-            setTimeout(function(){ s.classList.remove('show'); s.style.opacity=''; }, 600);
-        }, 1400);
-    </script>
     <!-- Spinner End -->
 
- <!-- Topbar Start -->
-    <div class="container-fluid bg-light p-0">
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark p-0 wow fadeIn" data-wow-delay="0.1s">
         <div class="row gx-0 d-none d-lg-flex">
             <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>Ataköy 7-8-9-10 Kısım Mahallesi Bakırköy/İstanbul</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center py-3">
-                    <small class="far fa-envelope text-primary me-2"></small>
-                    <small>bilgi@smartozelguvenlik.com</small>
+                <div class="h-100 d-inline-flex align-items-center py-3 me-3">
+                    <a class="text-body px-2" href="tel:+905353008052"><i class="fa fa-phone-alt text-primary me-2"></i>0535 300 80 52</a>
+                    <a class="text-body px-2" href="mailto:info@guvenkagroup.com"><i class="fa fa-envelope-open text-primary me-2"></i>info@guvenkagroup.com</a>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                    <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>0212 474 20 35</small>
-                </div>
+             
                 <div class="h-100 d-inline-flex align-items-center">
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="https://wa.me/905322053434" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-1" href="" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                    <a class="btn btn-sm-square bg-white text-primary me-0" href="https://www.instagram.com/smartgrup34?igsh=MXNqeXZ2bHE4dTh5eA==" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a class="btn btn-sm-square btn-outline-body me-1" href="https://www.facebook.com/profile.php?id=100064028560042&sk=about" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square btn-outline-body me-1" href="https://x.com/GuvenkaGroup" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square btn-outline-body me-1" href="" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square btn-outline-body me-0" href="https://www.instagram.com/guvenkagroup" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -133,39 +83,33 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="{{ route('home') }}" class="navbar-brand d-flex px-3 px-lg-3 ms-2 ">
-            <img src="{{ asset('assets/frontend/img/logo.webp') }}" alt="Smart Group Logo" class="img-fluid w-auto mt-2" height="120">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-lg-5  wow fadeIn" data-wow-delay="0.1s">
+        <a href="{{ route('home') }}" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="text-primary m-0"><img class="me-3" src="{{ asset('\assets\frontend\img\logo.jpg') }}" alt="Icon"></h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">ANA SAYFA</a>
-                <a href="{{ route('about-us.index') }}" class="nav-item nav-link {{ request()->routeIs('about-us.index') ? 'active' : '' }}">HAKKIMIZDA</a>
-               
-               <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {{ request()->routeIs('services-category.index') || request()->routeIs('services.byCategory') || request()->routeIs('home.services.show') ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">HİZMETLERİMİZ</a>
-                    <ul class="dropdown-menu m-0 border-0 shadow-sm" style="border-radius: 12px;">
-                        <li><a class="dropdown-item fw-semibold {{ request()->routeIs('services-category.index') ? 'active' : '' }}" href="{{ route('services-category.index') }}">Tüm Hizmetler</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        @if(!empty($serviceCategories))
-                        @foreach ($serviceCategories as $serviceCategory)
-                            <li>
-                                <a class="dropdown-item {{ request()->routeIs('services.byCategory') && request()->route('slug') == $serviceCategory->slug ? 'active' : '' }}" href="{{ route('services.byCategory', ['slug' => $serviceCategory->slug]) }}">
-                                    {{ $serviceCategory->title }}
-                                </a>
-                            </li>
-                        @endforeach
-                        @endif
-                    </ul>
-                </div>        
-                <a href="{{ route('contact.index') }}" class="nav-item nav-link {{ request()->routeIs('contact.index') ? 'active' : '' }}">İLETİŞİM</a>
-                <a href="{{ route('references.index') }}" class="nav-item nav-link d-lg-none {{ request()->routeIs('references.index') ? 'active' : '' }}">REFERANSLARIMIZ</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link active">ANA SAYFA</a>
+                <a href="{{ route('about-us.index') }}" class="nav-item nav-link">KURUMSAL</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">GRUP ŞİRKETLERİMİZ</a>
+                    <div class="dropdown-menu border-0 m-0">
+                        <a href="" class="dropdown-item">GKA İNŞAAT</a>
+                        <a href="" class="dropdown-item">GKA HAFRİYAT</a>
+                         <a href="" class="dropdown-item">GKA YIKIM</a>
+                        <a href="" class="dropdown-item">GKA GAYRİMENKUL</a>
+                        <a href="" class="dropdown-item">GKA TEMİZLİK</a>
+                        <a href="" class="dropdown-item">GKA DANIŞMANLIK</a>
+                        <a href="" class="dropdown-item">GKA ORGANİZASYON</a>
+                    </div>
+                </div>
+                <a href="{{ route('contact.index') }}" class="nav-item nav-link">İLETİŞİM</a>
+                <a href="{{ route('frontend.blog.index') }}" class="nav-item nav-link">BLOG</a>
             </div>
-            <!-- Masaüstü İçin Referanslar Butonu / Sadece geniş ekranda görünür -->
-            <a href="{{ route('references.index') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">REFERANSLARIMIZ<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="{{ route('contact.index') }}" class="btn btn-primary py-2 px-4 d-none d-lg-block">TEKLİF AL</a>
         </div>
     </nav>
     <!-- Navbar End -->

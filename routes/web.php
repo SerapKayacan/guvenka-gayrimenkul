@@ -50,6 +50,11 @@ Route::middleware(['coming.soon'])->group(function () {
     Route::get('/references', [ReferencesController::class, 'index'])->name('references.index');
 
     Route::get('/ara', [SearchController::class, 'search'])->name('search');
+
+    Route::prefix('blog')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('frontend.blog.index');
+        Route::get('/{slug}', [\App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('frontend.blog.show');
+    });
 });
 
 Route::prefix('carousel')->group(function () {
@@ -126,5 +131,14 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
         Route::get('/duzenle/{id}', [PartnerController::class, 'edit'])->name('edit');
         Route::put('/duzenle/{id}', [PartnerController::class, 'update'])->name('update');
         Route::delete('/sil/{id}', [PartnerController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('blog')->name('blog.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\BlogController::class, 'index'])->name('index');
+        Route::get('/yeni', [\App\Http\Controllers\Admin\BlogController::class, 'create'])->name('create');
+        Route::post('/yeni', [\App\Http\Controllers\Admin\BlogController::class, 'store'])->name('store');
+        Route::get('/duzenle/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('edit');
+        Route::put('/duzenle/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update'])->name('update');
+        Route::delete('/sil/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('destroy');
     });
 });
